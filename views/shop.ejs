@@ -1,0 +1,60 @@
+<% include partials/head %>
+
+  <body class="background--grey height--1-1">
+    <div class="flex flex-justified--center soft-quad--ends soft-double--bottom background--faint">
+      <div class="max-width--large text--center text-align--center align--center">
+        <center><h2> Welcome to Attic & Button  !</h2></center>
+        <br/><br/>
+        <div style="display:<%= filter_on %>" align="center">
+          <form action="/shop" method="post">
+                <b>Filter:</b>
+                <select name="filter" onchange="this.form.submit()">
+                  <% if (filter_by == "category") { %>
+                    <option selected="selected" value="category">category</option>
+                  <% } else { %>
+                    <option value="category">category</option>
+                  <% } %>
+                  <% if (filter_by == "price") { %>
+                    <option selected="selected" value="price">price</option>
+                  <% } else { %>
+                    <option value="price">price</option>
+                  <% } %>
+                </select>
+          </form>
+          <br/><br/>
+        </div>
+        <% if (data) { %>
+          <table style="cellspacing: 10">
+              <% data.forEach(function(item, index) { %>
+                <% if ([0,3,6].indexOf(index) != -1) { %>
+                <tr>
+                <% } %>
+                  <td style="width: 250px;" class="background--white text--center font-family--tahoma">
+                    <h3><b><%= item.name %></b></h3>
+                    in <%= item.color %><br>
+                    <b><%= item.category %>, $<%= item.price %></b>
+                    <br/><br/>
+                    <img style="margin: auto;" src="/images/<%= item.imageUrl %>" />
+                    <br/>
+                    <form action="http://127.0.0.1:4001/buy" method="post">
+                      <input type="text" name="user_id" value="<%= user._id %>" hidden="true">
+                      <input type="text" name="price" value="<%= item.price %>" hidden="true">
+                      <button type="submit" style="background: #cb1b2c; color: #ffffff; border: none">BUY NOW</button>
+                    </form>
+                    <br/>
+
+                  </td>
+                  <td width="10"></td>
+                  <p></p>
+                <% if ([2,5,8].indexOf(index) != -1){  %>
+                </tr>
+                <tr height="10"></tr>
+                <% } %>
+            <% }); %>
+        </table>
+        <% } %>
+      </div>
+    </div>
+    <span class="fa fa-sign-out"><a href="/logout"> Sign out</a></span>
+  </body>
+</html>
