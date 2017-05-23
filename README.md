@@ -4,7 +4,7 @@ Please refer to the [Optimizely X: Full Stack Node Documentation](https://develo
 
 This demo app will show using the Node SDK to roll out a new sorting feature.
 
-## Step 1: Install Optimizely and Ruby Dependencies
+## Step 1: Install Optimizely and Other Node Dependencies
 
 ```
 cd node_full_stack_demo/
