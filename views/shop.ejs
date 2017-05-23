@@ -36,7 +36,7 @@
                     <br/><br/>
                     <img style="margin: auto;" src="/images/<%= item.imageUrl %>" />
                     <br/>
-                    <form action="http://127.0.0.1:4001/buy" method="post">
+                    <form action="/buy" method="post">
                       <input type="text" name="user_id" value="<%= user._id %>" hidden="true">
                       <input type="text" name="price" value="<%= item.price %>" hidden="true">
                       <button type="submit" style="background: #cb1b2c; color: #ffffff; border: none">BUY NOW</button>
